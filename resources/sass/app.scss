@@ -14,13 +14,13 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 
 .collapsed::after {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free" !important;
     font-weight: 900;
     content: "\f107" !important;
 }
 
 .collapsed.open::after {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free" !important;
     font-weight: 900;
     content: "\f106" !important;
 }

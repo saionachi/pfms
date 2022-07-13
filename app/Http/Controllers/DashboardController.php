@@ -12,7 +12,7 @@ class DashboardController extends Controller
      * 
      * @return Illuminate\Contracts\View\View
      */
-    public function showDashboard()
+    public function index()
     {
         return view('dashboard.index');
     }

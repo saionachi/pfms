@@ -16,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [DashboardController::class, 'showDashboard']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/budget-plan', [DashboardController::class, 'index']);
+Route::get('/manage-funds', [DashboardController::class, 'index']);
+Route::get('/cash-flow', [DashboardController::class, 'index']);
+Route::get('/management/users', [DashboardController::class, 'index']);
+Route::get('/management/categories', [DashboardController::class, 'index']);

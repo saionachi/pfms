@@ -14,12 +14,10 @@
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon">
                     <i class="fa-solid fa-coins"></i>
                 </div>
@@ -30,8 +28,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
+            <li class="nav-item @if (Request::segment(1) == "dashboard") active @endif">
+                <a class="nav-link" href="/dashboard">
                     <i class="fa-solid fa-house"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -40,7 +38,7 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Budget Plan -->
-            <li class="nav-item ">
+            <li class="nav-item @if (Request::segment(1) == "budget-plan") active @endif">
                 <a class="nav-link" href="/budget-plan">
                     <i class="fa-solid fa-list-check"></i>
                     <span>Budget Plan</span></a>
@@ -48,9 +46,9 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            
+
             <!-- Nav Item - Manage Funds -->
-            <li class="nav-item ">
+            <li class="nav-item @if (Request::segment(1) == "manage-funds") active @endif">
                 <a class="nav-link" href="/manage-funds">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <span>Manage Funds</span></a>
@@ -58,9 +56,9 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            
+
             <!-- Nav Item - Cash Flow -->
-            <li class="nav-item ">
+            <li class="nav-item @if (Request::segment(1) == "cash-flow") active @endif">
                 <a class="nav-link" href="/cash-flow">
                     <i class="fa-solid fa-money-bill-transfer"></i>
                     <span>Cash Flow</span></a>
@@ -70,7 +68,7 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Management-->
-            <li class="nav-item">
+            <li class="nav-item @if (Request::segment(1) == "management") active @endif">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapseUser">
                     <i class="fa-solid fa-gear"></i>
@@ -78,12 +76,11 @@
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Users</a>
-                        <a class="collapse-item" href="#">Categories</a>
+                        <a class="collapse-item @if (Request::segment(1) == "management" && Request::segment(2) == "users") active @endif" href="/management/users">Users</a>
+                        <a class="collapse-item @if (Request::segment(1) == "management" && Request::segment(2) == "categories") active @endif" href="/management/categories">Categories</a>
                     </div>
                 </div>
             </li>
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -130,7 +127,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" id="app">
                     @yield('content')
                 </div>
                 <!-- /.container-fluid -->
@@ -142,7 +139,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright 2022 &copy; PFMS by Saionachi</span>
                     </div>
                 </div>
             </footer>
@@ -158,6 +155,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
     <!-- Global Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

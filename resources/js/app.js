@@ -9,6 +9,10 @@ require('./nav-controls');
 
 window.Vue = require('vue').default;
 
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import { routes } from './routes';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,7 +24,9 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VueRouter);
+
+// Vue.component('side-nav', require('./components/SideNav.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,6 +34,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+const router = new VueRouter({
+        mode: 'history',
+        routes: routes
+    }),
+    app = new Vue({
+        el: '#app',
+        router: router
+    });
