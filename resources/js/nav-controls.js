@@ -28,3 +28,11 @@ for (let each of dropdown) {
         }
     });
 }
+
+// Logout
+if (document.getElementById('logout-btn')) {
+    document.getElementById('logout-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('logout-form').submit();
+    });
+}

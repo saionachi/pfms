@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('m_access')->default(0);
             $table->tinyInteger('bp_access')->default(1);
             $table->tinyInteger('mf_access')->default(1);
-            $table->tinyInteger('h_access')->default(1);
+            $table->tinyInteger('cf_access')->default(1);
             $table->timestamps();
         });
     }

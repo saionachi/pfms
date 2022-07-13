@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.unauth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div id="app" class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
@@ -56,12 +56,13 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <a href="{{ route('register') }}" class="btn btn-link">{{ __('Create Account') }}</a>
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>

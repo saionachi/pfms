@@ -5403,11 +5403,19 @@ try {
         el.classList.add('show');
       }
     });
-  }
+  } // Logout
+
 } catch (err) {
   _iterator2.e(err);
 } finally {
   _iterator2.f();
+}
+
+if (document.getElementById('logout-btn')) {
+  document.getElementById('logout-btn').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('logout-form').submit();
+  });
 }
 
 /***/ }),

@@ -13,6 +13,10 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 
+html, body {
+    height: 100%;
+}
+
 .collapsed::after {
     font-family: "Font Awesome 6 Free" !important;
     font-weight: 900;

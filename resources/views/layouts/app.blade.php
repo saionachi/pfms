@@ -28,59 +28,70 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item @if (Request::segment(1) == "dashboard") active @endif">
+            <li class="nav-item @if (Request::segment(1) == 'dashboard') active @endif">
                 <a class="nav-link" href="/dashboard">
                     <i class="fa-solid fa-house"></i>
                     <span>Dashboard</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            @if (Auth::user()->bp_access)
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Nav Item - Budget Plan -->
-            <li class="nav-item @if (Request::segment(1) == "budget-plan") active @endif">
-                <a class="nav-link" href="/budget-plan">
-                    <i class="fa-solid fa-list-check"></i>
-                    <span>Budget Plan</span></a>
-            </li>
+                <!-- Nav Item - Budget Plan -->
+                <li class="nav-item @if (Request::segment(1) == 'budget-plan') active @endif">
+                    <a class="nav-link" href="/budget-plan">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Budget Plan</span></a>
+                </li>
+            @endif
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            @if (Auth::user()->mf_access)
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Nav Item - Manage Funds -->
-            <li class="nav-item @if (Request::segment(1) == "manage-funds") active @endif">
-                <a class="nav-link" href="/manage-funds">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <span>Manage Funds</span></a>
-            </li>
+                <!-- Nav Item - Manage Funds -->
+                <li class="nav-item @if (Request::segment(1) == 'manage-funds') active @endif">
+                    <a class="nav-link" href="/manage-funds">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <span>Manage Funds</span></a>
+                </li>
+            @endif
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            @if (Auth::user()->cf_access)
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Nav Item - Cash Flow -->
-            <li class="nav-item @if (Request::segment(1) == "cash-flow") active @endif">
-                <a class="nav-link" href="/cash-flow">
-                    <i class="fa-solid fa-money-bill-transfer"></i>
-                    <span>Cash Flow</span></a>
-            </li>
+                <!-- Nav Item - Cash Flow -->
+                <li class="nav-item @if (Request::segment(1) == 'cash-flow') active @endif">
+                    <a class="nav-link" href="/cash-flow">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                        <span>Cash Flow</span></a>
+                </li>
+            @endif
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            @if (Auth::user()->m_access)
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Nav Item - Management-->
-            <li class="nav-item @if (Request::segment(1) == "management") active @endif">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
-                    aria-expanded="true" aria-controls="collapseUser">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Management</span>
-                </a>
-                <div id="collapseUser" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item @if (Request::segment(1) == "management" && Request::segment(2) == "users") active @endif" href="/management/users">Users</a>
-                        <a class="collapse-item @if (Request::segment(1) == "management" && Request::segment(2) == "categories") active @endif" href="/management/categories">Categories</a>
+                <!-- Nav Item - Management-->
+                <li class="nav-item @if (Request::segment(1) == 'management') active @endif">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                        aria-expanded="true" aria-controls="collapseUser">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Management</span>
+                    </a>
+                    <div id="collapseUser" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item @if (Request::segment(1) == 'management' && Request::segment(2) == 'users') active @endif"
+                                href="/management/users">Users</a>
+                            <a class="collapse-item @if (Request::segment(1) == 'management' && Request::segment(2) == 'categories') active @endif"
+                                href="/management/categories">Categories</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            @endif
         </ul>
         <!-- End of Sidebar -->
 
@@ -105,12 +116,13 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">John Doe</span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="#" id="logout-btn">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
