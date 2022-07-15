@@ -36,7 +36,7 @@
 
             @if (Auth::user()->bp_access)
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Budget Plan -->
                 <li class="nav-item @if (Request::segment(1) == 'budget-plan') active @endif">
@@ -48,7 +48,7 @@
 
             @if (Auth::user()->mf_access)
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Manage Funds -->
                 <li class="nav-item @if (Request::segment(1) == 'manage-funds') active @endif">
@@ -60,7 +60,7 @@
 
             @if (Auth::user()->cf_access)
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Cash Flow -->
                 <li class="nav-item @if (Request::segment(1) == 'cash-flow') active @endif">
@@ -72,7 +72,7 @@
 
             @if (Auth::user()->m_access)
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Management-->
                 <li class="nav-item @if (Request::segment(1) == 'management') active @endif">

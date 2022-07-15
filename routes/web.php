@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriesManagementController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Authentication
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/budget-plan', [DashboardController::class, 'index']);
-Route::get('/manage-funds', [DashboardController::class, 'index']);
-Route::get('/cash-flow', [DashboardController::class, 'index']);
-Route::get('/management/users', [DashboardController::class, 'index']);
-Route::get('/management/categories', [DashboardController::class, 'index']);
+Route::group(['middleware' => ['auth']], function () {
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    // Budget Plan
+    Route::get('/budget-plan', [DashboardController::class, 'index']);
+
+    // Manage Funds
+    Route::get('/manage-funds', [DashboardController::class, 'index']);
+
+    // Cash Flow
+    Route::get('/cash-flow', [DashboardController::class, 'index']);
+
+    // Management > Users
+    Route::get('/management/users{any}', function () {
+        return view('management.users.index');
+    })->where('any', '.*');
+
+    // Management > Categories
+    Route::resource('/management/categories', CategoriesManagementController::class);
+});

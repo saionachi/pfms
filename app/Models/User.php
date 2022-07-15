@@ -26,6 +26,7 @@ class User extends Authenticatable
         'bp_access',
         'mf_access',
         'cf_access',
+        'is_active'
     ];
 
     /**

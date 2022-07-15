@@ -26,7 +26,7 @@ import { routes } from './routes';
 
 Vue.use(VueRouter);
 
-// Vue.component('side-nav', require('./components/SideNav.vue').default);
+Vue.component('management-users-index', require('./components/management/users/Index.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -29055,3 +29055,9 @@ html, body {
   font-weight: 900;
   content: "\f106" !important;
 }
+
+.table td.fit,
+.table th.fit {
+  white-space: nowrap;
+  width: 1%;
+}
